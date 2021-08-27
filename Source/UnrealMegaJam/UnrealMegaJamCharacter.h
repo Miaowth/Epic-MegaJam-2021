@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "CameraPawn.h"
+
 #include "UnrealMegaJamCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -14,12 +16,16 @@ class AUnrealMegaJamCharacter : public ACharacter
 public:
 	AUnrealMegaJamCharacter();
 
-	void Jump();
-	void StopJumping();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ACameraPawn* CameraReference;
+
 
 protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	virtual void BeginPlay() override;
+	void Jump();
+	void StopJumping();
 };
 

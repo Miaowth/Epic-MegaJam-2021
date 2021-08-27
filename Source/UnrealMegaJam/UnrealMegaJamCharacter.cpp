@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 ////////////////////////////////////////////////////////////////////////
 //AUnrealMegaJamCharacter
@@ -31,6 +32,18 @@ AUnrealMegaJamCharacter::AUnrealMegaJamCharacter()
 	
 	//	 //Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	//	 //are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+}
+
+void AUnrealMegaJamCharacter::BeginPlay() {
+	//set camera reference
+	Super::BeginPlay();
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACameraPawn::StaticClass(), FoundActors);
+
+	CameraReference = Cast<ACameraPawn>(FoundActors[0]);
+	UGameplayStatics::GetPlayerController(this, 0)->SetViewTargetWithBlend(CameraReference, 0.0f);
+	
+
 }
 
 void AUnrealMegaJamCharacter::Tick(float DeltaTime) {

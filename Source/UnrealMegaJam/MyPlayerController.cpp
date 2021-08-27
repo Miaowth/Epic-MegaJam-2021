@@ -64,9 +64,12 @@ void AMyPlayerController::MoveForward(float Value)
 		if (Value != 0.0f)
 		{
 			// find out which way is forward
+			//const FRotator Rotation = PlayerCharacter->CameraReference->Camera->GetComponentRotation();
 			const FRotator Rotation = GetControlRotation();
 			const FRotator YawRotation(0, Rotation.Yaw, 0);
+			//if (Value < 0) {
 
+			//}
 			// get forward vector
 			const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 			PlayerCharacter->AddMovementInput(Direction, Value);
