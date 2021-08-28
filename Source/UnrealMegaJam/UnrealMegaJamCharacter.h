@@ -26,8 +26,8 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
-	void Jump();
-	void StopJumping();
+	//void Jump();
+	//void StopJumping();
 
 	UFUNCTION(BlueprintNativeEvent)
 		void Pickup();
