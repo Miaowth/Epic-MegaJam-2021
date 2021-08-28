@@ -18,7 +18,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		ACameraPawn* CameraReference;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool IsHolding = false;
 
 protected:
 
@@ -27,5 +28,8 @@ public:
 	virtual void BeginPlay() override;
 	void Jump();
 	void StopJumping();
+
+	UFUNCTION(BlueprintNativeEvent)
+		void Pickup();
 };
 

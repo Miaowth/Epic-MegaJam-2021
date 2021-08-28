@@ -25,13 +25,16 @@ public:
 	float Speed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USceneComponent* MyRootComponent;
+	int32 DamagePower;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UStaticMeshComponent* WallModel;
+	USceneComponent* MyRootComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UStaticMeshComponent* DestinationMarker;
+	UStaticMeshComponent* WallModel;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* DestinationMarker;
 
 protected:
 	// Called when the game starts or when spawned

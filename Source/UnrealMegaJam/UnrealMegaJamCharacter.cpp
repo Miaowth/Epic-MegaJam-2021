@@ -46,6 +46,10 @@ void AUnrealMegaJamCharacter::BeginPlay() {
 
 }
 
+void AUnrealMegaJamCharacter::Pickup_Implementation() {
+
+}
+
 void AUnrealMegaJamCharacter::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 }

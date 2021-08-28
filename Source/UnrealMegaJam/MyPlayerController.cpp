@@ -27,6 +27,8 @@ void AMyPlayerController::SetupInputComponent()
 	InputComponent->BindAction("Jump", IE_Pressed, this, &AMyPlayerController::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &AMyPlayerController::StopJumping);
 
+	InputComponent->BindAction("Pickup", IE_Pressed, this, &AMyPlayerController::Pickup);
+
 	InputComponent->BindAxis("MoveForward", this, &AMyPlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMyPlayerController::MoveRight);
 
@@ -39,6 +41,14 @@ void AMyPlayerController::SetupInputComponent()
 	InputComponent->BindAxis("LookUpRate", this, &AMyPlayerController::LookUpAtRate);
 
 }
+
+void AMyPlayerController::Pickup() {
+
+	if (PlayerCharacter) {
+		PlayerCharacter->Pickup();
+	}
+}
+
 
 void AMyPlayerController::TurnAtRate(float Rate)
 {
@@ -64,8 +74,8 @@ void AMyPlayerController::MoveForward(float Value)
 		if (Value != 0.0f)
 		{
 			// find out which way is forward
-			//const FRotator Rotation = PlayerCharacter->CameraReference->Camera->GetComponentRotation();
-			const FRotator Rotation = GetControlRotation();
+			const FRotator Rotation = PlayerCharacter->CameraReference->Camera->GetComponentRotation();
+			//const FRotator Rotation = GetControlRotation();
 			const FRotator YawRotation(0, Rotation.Yaw, 0);
 			//if (Value < 0) {
 
@@ -85,7 +95,8 @@ void AMyPlayerController::MoveRight(float Value)
 		if (Value != 0.0f)
 		{
 			// find out which way is right
-			const FRotator Rotation = GetControlRotation();
+			const FRotator Rotation = PlayerCharacter->CameraReference->Camera->GetComponentRotation();
+			//const FRotator Rotation = GetControlRotation();
 			const FRotator YawRotation(0, Rotation.Yaw, 0);
 
 			// get right vector 

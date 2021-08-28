@@ -75,6 +75,8 @@ private:
 
 	FVector2D MoveDir;
 
+	void Pickup();
+
 protected:
 	//END DEFAULT INPUTS
 
