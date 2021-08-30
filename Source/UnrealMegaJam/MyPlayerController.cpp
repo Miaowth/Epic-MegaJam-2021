@@ -28,6 +28,7 @@ void AMyPlayerController::SetupInputComponent()
 	InputComponent->BindAction("Jump", IE_Released, this, &AMyPlayerController::StopJumping);
 
 	InputComponent->BindAction("Pickup", IE_Pressed, this, &AMyPlayerController::Pickup);
+	InputComponent->BindAction("Pause", IE_Pressed, this, &AMyPlayerController::Pause);
 
 	InputComponent->BindAxis("MoveForward", this, &AMyPlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMyPlayerController::MoveRight);
@@ -48,7 +49,11 @@ void AMyPlayerController::Pickup() {
 		PlayerCharacter->Pickup();
 	}
 }
-
+void AMyPlayerController::Pause() {
+	if (PlayerCharacter) {
+		PlayerCharacter->Pause();
+	}
+}
 
 void AMyPlayerController::TurnAtRate(float Rate)
 {

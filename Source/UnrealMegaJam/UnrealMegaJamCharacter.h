@@ -31,5 +31,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent)
 		void Pickup();
+	UFUNCTION(BlueprintNativeEvent)
+		void Pause();
 };
 
